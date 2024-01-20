@@ -48,6 +48,239 @@ class InternshipCache {
   }
 }
 
+//class containing internship cache loaders and creaters
+class InternshipLoader {
+    
+    //all of the skills which will be supported by the program
+    let skillBank = []
+    
+    get skilBank() {
+        return this.skillBank
+    }
+    
+    //all of the degrees which will be supported by the program
+    let degreeBank = []
+    
+    get degreeBank() {
+        return this.degreeBank
+    }
+    
+    //all of the locations which will be supported by the program
+    let locationBank = []
+    
+    get locationBank() {
+        return this.locationBank
+    }
+    
+    //this function will look for skills in the given decriptions
+    //it uses the skillBank array as the supported skills
+    //
+    //@param description - the descriptions to look for the skills in
+    //
+    //@return an array of skills which were found in the description or ["null"] if no skills were found
+    
+    locateSkills(description) {
+        description = description.toLowerCase()
+        let skills = []
+        skills [0] = "null"
+        let foundSkills = 0
+        for (let i = 0; i < skillBank.length; i++) {
+            if (description.indexOf(skillBank[i].toLowerCase()) != -1) {
+                skills[foundSkills++] = skillBank[i]
+            }
+        }
+        return skills
+    }
+    
+    //this function will look for degrees in the given decriptions
+    //it uses the degreeBank array as the supported degrees
+    //
+    //@param description - the descriptions to look for the degrees in
+    //
+    //@return an array of degrees which were found in the description or ["null"] if no skills were found
+    
+    locateDegrees(description) {
+        description = description.toLowerCase()
+        let degrees = []
+        degrees [0] = "null"
+        let foundDegrees = 0
+        for (let i = 0; i < degreesBank.length; i++) {
+            if (description.indexOf(degreesBank[i].toLowerCase()) != -1) {
+                degrees[foundDegrees++] = degreesBank[i]
+            }
+        }
+        return degrees
+    }
+    
+    //this function will look for locations in the given locationInfo
+    //it uses the locationBank array as the supported locations
+    //
+    //@param locationInfo - the info to look for the locations in
+    //
+    //@return an array of locations which were found in the description or ["null"] if no locations were found
+    
+    locateLocations(locationInfo) {
+        locationInfo = description.locationInfo()
+        let locations = []
+        locations [0] = "null"
+        let foundLocations = 0
+        for (let i = 0; i < locationBank.length; i++) {
+            if (location.indexOf(locationBank[i].toLowerCase()) != -1) {
+                locations[foundLocations++] = locationBank[i]
+            }
+        }
+        return locations
+    }
+    
+    //this function will load in the intitial cache at the start of the program
+    //it will read in data from the given file path and create an Internship Cache object
+    //
+    //@param filePath - the location of the file generated from webscraping
+    //                  the file is in the following format:
+    //                  company||logo||position||salary||description||link||location
+    //
+    //@return an InternshipCache object containing all of the objects from the file
+  
+    loadCache(filePath) {
+        let cache = new InternshipCache()
+
+        var file = new File(filePath)
+        var str = "";
+      
+        //reading
+        file.open("r")
+        while (!file.eof) {
+            str = file.readln()
+            
+            let segments = str.split("||")
+            
+            let company = "null"
+            if (segments[0] != "aekjfo;i") {
+                company = segments[0]
+            }
+            
+            let logo = "null"
+            if (segments[1] != "aekjfo;i") {
+                logo = segments[1]
+            }
+            
+            let position = "null"
+            if (segments[2] != "aekjfo;i") {
+                position = segments[2]
+            }
+            
+            let salary = -1
+            if (segments[3] != "aekjfo;i") {
+                salary = segments[3]
+            }
+            
+            let skills ["null"]
+            if (segments[4] != "aekjfo;i") {
+                skills = this.locateSkills(segments[4])
+            }
+            
+            let description = "null"
+            if (segments[4] != "aekjfo;i") {
+                description = segments[4]
+            }
+            
+            let link = "null"
+            if (segments[5] != "aekjfo;i") {
+                link = segments[5]
+            }
+            
+            let degree = ["null"]
+            if (segments[4] != "aekjfo;i") {
+                degree = this.locateDegrees(segments[4])
+            }
+
+            let locations = ["null"]
+            if (segments[6] != "aekjfo;i") {
+                locations = this.locateLocations(segments[6])
+            }
+
+            cache.newInternship(company, logo, positon, salary, skills, description, link, degree, locations)
+      }
+      file.close()
+     
+      return cache
+  }
+  
+    //this function will update the given cache with new information
+    //it will read in data from the given file path
+    //
+    //@param filePath - the location of the file generated from webscraping
+    //                  the file is in the following format:
+    //                  company||logo||position||salary||description||link||location
+    //@param internshipCache - the cache all of the new info will be added to
+    //
+    //@return an InternshipCache object containing all of the objects updated from the file
+  
+    updateCache(filePath, cache) {
+        var file = new File(filePath)
+        var str = "";
+      
+        //reading
+        file.open("r")
+        while (!file.eof) {
+            str = file.readln()
+            
+            let segments = str.split("||")
+            
+            let company = "null"
+            if (segments[0] != "aekjfo;i") {
+                company = segments[0]
+            }
+            
+            let logo = "null"
+            if (segments[1] != "aekjfo;i") {
+                logo = segments[1]
+            }
+            
+            let position = "null"
+            if (segments[2] != "aekjfo;i") {
+                position = segments[2]
+            }
+            
+            let salary = -1
+            if (segments[3] != "aekjfo;i") {
+                salary = segments[3]
+            }
+            
+            let skills ["null"]
+            if (segments[4] != "aekjfo;i") {
+                skills = this.locateSkills(segments[4])
+            }
+            
+            let description = "null"
+            if (segments[4] != "aekjfo;i") {
+                description = segments[4]
+            }
+            
+            let link = "null"
+            if (segments[5] != "aekjfo;i") {
+                link = segments[5]
+            }
+            
+            let degree = ["null"]
+            if (segments[4] != "aekjfo;i") {
+                degree = this.locateDegrees(segments[4])
+            }
+
+            let locations = ["null"]
+            if (segments[6] != "aekjfo;i") {
+                locations = this.locateLocations(segments[6])
+            }
+
+            cache.newInternship(company, logo, positon, salary, skills, description, link, degree, locations)
+      }
+      file.close()
+     
+      return cache
+  }
+}
+
+
 //class containing filter funtions
 class FilterTool {
     
@@ -328,18 +561,18 @@ class FilterTool {
 }
 
 //main for testing
-// let cache = new InternshipCache()
-// cache.newInternship("Apple", "logo","software eng", 2, ["living", "git", "Java"], "desc", "https://intern-ally.co/", ["compsci"], ["USA"])
-// cache.newInternship("Apple2", "logo","data scientist", 10000, ["dead"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
-// internships = cache.getInternships()
-// console.log(cache.getCacheSize)
-// console.log(cache.internships)
-// let ft = new FilterTool()
-// searched = ft.searchBar(cache, "dead")
-// searched = ft.inSalaryRange(searched, 3, 5, 0)
-// searched = ft.citySearch(searched, ["usa"])
-// searched = ft.majorSearch(searched, ["Data Science"])
-// searched = ft.skillSearch(searched, ["dead"])
-// console.log("After Search")
-// console.log(searched)
+let cache = new InternshipCache()
+cache.newInternship("Apple", "logo","software eng", 2, ["living", "git", "Java"], "desc", "https://intern-ally.co/", ["compsci"], ["USA"])
+cache.newInternship("Apple2", "logo","data scientist", 10000, ["dead"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
+internships = cache.getInternships()
+console.log(cache.getCacheSize)
+console.log(cache.internships)
+let ft = new FilterTool()
+searched = ft.searchBar(cache, "dead")
+searched = ft.inSalaryRange(searched, 3, 5, 0)
+searched = ft.citySearch(searched, ["usa"])
+searched = ft.majorSearch(searched, ["Data Science"])
+searched = ft.skillSearch(searched, ["dead"])
+console.log("After Search")
+console.log(searched)
 
