@@ -54,6 +54,8 @@ class FilterTool {
     //@return true or false depending if conditions are met
     
     search(haystack, needle) {
+        haystack = haystack.toLowerCase()
+        needle = needle.toLowerCase()
         if (haystack.indexOf(needle) == -1) {
             return false
         }
@@ -86,12 +88,12 @@ class FilterTool {
                 return true
             }
             for (let j = 0; j < internship.degree.length; j++) {
-                if (this.search(internship.skills[j], individualWords[i])) {
+                if (this.search(internship.degree[j], individualWords[i])) {
                     return true
                 }
             }
             for (let j = 0; j < internship.locations.length; j++) {
-                if (this.search(internship.skills[j], individualWords[i])) {
+                if (this.search(internship.locations[j], individualWords[i])) {
                     return true
                 }
             }
@@ -111,6 +113,25 @@ class FilterTool {
     searchInternshipForSalary(internship, minSalary, maxSalary) {
         if (internship.salary >= minSalary && internship.salary <= maxSalary) {
             return true
+        }
+        return false
+    }
+    
+    //helper function for citySearch
+    //searches one particular internship for city(s)
+    //
+    //@param internship - an internship object to look in
+    //@param cities - an array of cities to look in
+    //
+    //@return true or false depending if conditions are met
+    
+    searchInternshipForCity(internship, cities) {
+        for (let i = 0; i < cities.length; i++) {
+            for (let j = 0; j < internship.locations.length; j++) {
+                if (this.search(internship.locations[j], cities[i])) {
+                    return true
+                }
+            }
         }
         return false
     }
@@ -173,18 +194,45 @@ class FilterTool {
         }
         return sortedInternships
     }
+    
+    //This function is used to filter an internship cache based on city(s)
+    //
+    //@param internshipCache - the InternshipCache object to search from
+    //@param cities - an array of cities which are considered for internships
+    //
+    //@return An InternshipCache object of the sorted internships
+    
+    citySearch(internshipCache, cities) {
+        let sortedInternships = new InternshipCache()
+        for (let i = 0; i < internshipCache.getCacheSize; i++) {
+            if (this.searchInternshipForCity(internshipCache.internships[i], cities)) {
+                sortedInternships.newInternship(internshipCache.internships[i].company,
+                                                internshipCache.internships[i].logo,
+                                                internshipCache.internships[i].position,
+                                                internshipCache.internships[i].salary,
+                                                internshipCache.internships[i].skills,
+                                                internshipCache.internships[i].description,
+                                                internshipCache.internships[i].link,
+                                                internshipCache.internships[i].degree,
+                                                internshipCache.internships[i].locations
+                )
+            }
+        }
+        return sortedInternships
+    }
 }
 
 //main for testing
-//let cache = new InternshipCache()
-//cache.newInternship("Apple", "logo","software eng", 2, ["living", "git", "Java"], "desc", "https://intern-ally.co/", ["compsci"], ["USA"])
-//cache.newInternship("Apple2", "logo","data scientist", 4, ["dead"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
-//internships = cache.getInternships()
-//console.log(cache.getCacheSize)
-//console.log(cache.internships)
-//let ft = new FilterTool()
-//searched = ft.searchBar(cache, "dead")
-//searched = ft.inSalaryRange(searched, 5, 6)
-//console.log("After Search")
-//console.log(searched)
+// let cache = new InternshipCache()
+// cache.newInternship("Apple", "logo","software eng", 2, ["living", "git", "Java"], "desc", "https://intern-ally.co/", ["compsci"], ["USA"])
+// cache.newInternship("Apple2", "logo","data scientist", 4, ["dead"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
+// internships = cache.getInternships()
+// console.log(cache.getCacheSize)
+// console.log(cache.internships)
+// let ft = new FilterTool()
+// searched = ft.searchBar(cache, "dead")
+// searched = ft.inSalaryRange(searched, 3, 5)
+// searched = ft.citySearch(searched, ["usa"])
+// console.log("After Search")
+// console.log(searched)
 
