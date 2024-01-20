@@ -17,6 +17,7 @@ function onLoad() {
 }
 
 function filterNow() {
+    onLoad();
     filter_major();
     filter_city();
     filter_skills();
