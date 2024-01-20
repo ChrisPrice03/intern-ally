@@ -1,6 +1,6 @@
 //one individual internship
 class Internship {
-  constructor(company, logo, positon, salary, skills, description, link, degree) {
+  constructor(company, logo, position, salary, skills, description, link, degree, locations) {
     this.company = company
     this.logo = logo
     this.position = position
@@ -9,6 +9,7 @@ class Internship {
     this.description = description
     this.link = link
     this.degree = degree
+    this.locations = locations
   }
 }
 
@@ -21,8 +22,8 @@ class InternshipCache {
   }
 
   //creates a new internship and adds it to the cache
-  newInternship(company, logo, positon, salary, skills, description, link, degree) {
-    let position = new Internship(company, logo, positon, salary, skills, description, link, degree)
+  newInternship(company, logo, positon, salary, skills, description, link, degree, locations) {
+    let position = new Internship(company, logo, positon, salary, skills, description, link, degree, locations)
     this.internships.push(position)
     return positon
   }
@@ -33,7 +34,7 @@ class InternshipCache {
   }
 
   //returns current size of cache
-  get getIntershipsSize() {
+  get getCacheSize() {
     return this.internships.length
   }
 }
