@@ -16,6 +16,9 @@ function onLoad() {
     myFilteredCache = myGeneralCache;
 }
 
+/*
+Filters internships by location, major, and city
+ */
 function filterNow() {
     onLoad();
     filter_major();
