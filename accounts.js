@@ -50,19 +50,20 @@ class Database {
         this.accountMap = new Map();
         this.passwordMap = new Map();
         var fs = require("fs")
-        fs.open('input.txt', 'r+', function(err, fd) {
+        fs.open('accounts.txt', 'r+', function(err, fd) {
             if (err) {
                 return console.error(err);
             }  
         });
-        fs.writeFile('input.txt', 'Simply Easy Learning!', function(err) {
+        fs.writeFile('accounts.txt', 'email,password,InternshipPreferences\n', function(err) {
             if (err) {
                 return console.error(err);
             }
-        fs.readFile('input.txt', function (err, data) {
+        fs.readFile('accounts.txt', function (err, data) {
             if (err) {
                 return console.error(err);
             }
+            console.log(data.toString);
             });
         });
     }
