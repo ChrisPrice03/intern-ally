@@ -13,35 +13,23 @@
 </p>
 
 <body>
+<script src="main_page.js"></script>
 
 <p>Hello this is a test</p>
 
 <form>
-  <label for="majors">Choose a major:</label>
-  <select name="majors" id="majors" multiple>
+
+
+
+  <label for="major_select">Choose a major:</label>
+  <select name="majors" id="major_select" multiple>
     <option value="Computer Science">Computer Science</option>
     <option value="Data Science">Data Science</option>
     <option value="Artificial Intelligence">Artificial Intelligence</option>
     <option value="Cybersecurity">Cybersecurity</option>
   </select>
-  <br><br>
   <button type = "button" onclick="getSelectedMajors()">Submit</button>
-
 </form>
-
-<script>
-  function getSelectedMajors() {
-    var selectedMajors = [];
-    var selectedElement_major = document.getElementById("majors");
-
-    for (var i = 0; i < selectedElement_major.options.length; i++) {
-      if (selectedElement_major[i].selected) {
-        selectedMajors.push(selectedElement_major.options[i].value);
-        console.log(selectedElement_major.options[i].value);
-      }
-    }
-  }
-</script>
 </body>
 
 </html>
