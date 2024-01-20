@@ -10,10 +10,16 @@ class Internship {
     this.link = link                        //str - a link to the job posting
     this.degree = degree                    //str[] - listed or related degrees
     this.locations = locations              //str[] - location(s) this position is available
+    
+    this.hourly = this.salaryToHourly(salary)    //int - the hourly wage of the posted position
   }
   
   get companyName() {
       return this.company
+  }
+  
+  salaryToHourly(salary) {
+      return salary/50/40
   }
 }
 
@@ -107,12 +113,20 @@ class FilterTool {
     //@param internship - an internship object to look in
     //@param minSalary - the min salary to look for
     //@param maxSalary - the max salary to look for
+    //@param timePeriod - an int representing either hourly (0) or salary (1)
     //
     //@return true or false depending if conditions are met
     
-    searchInternshipForSalary(internship, minSalary, maxSalary) {
-        if (internship.salary >= minSalary && internship.salary <= maxSalary) {
-            return true
+    searchInternshipForSalary(internship, minSalary, maxSalary, timePeriod) {
+        if (timePeriod == 1) {
+            if (internship.salary >= minSalary && internship.salary <= maxSalary) {
+                return true
+            }
+        }
+        else {
+            if (internship.hourly >= minSalary && internship.hourly <= maxSalary) {
+                return true
+            }
         }
         return false
     }
@@ -211,13 +225,14 @@ class FilterTool {
     //@param internshipCache - the InternshipCache object to search from
     //@param minSalary - the minimum salary required to be considered (int)
     //@param maxSalary - the maximum salary allowed to be considered (int)
+    //@param timePeriod - an int representing either hourly (0) or salary (1) 
     //
     //@return An InternshipCache object of the sorted internships
     
-    inSalaryRange(internshipCache, minSalary, maxSalary) {
+    inSalaryRange(internshipCache, minSalary, maxSalary, timePeriod) {
         let sortedInternships = new InternshipCache()
         for (let i = 0; i < internshipCache.getCacheSize; i++) {
-            if (this.searchInternshipForSalary(internshipCache.internships[i], minSalary, maxSalary)) {
+            if (this.searchInternshipForSalary(internshipCache.internships[i], minSalary, maxSalary, timePeriod)) {
                 sortedInternships.newInternship(internshipCache.internships[i].company,
                                                 internshipCache.internships[i].logo,
                                                 internshipCache.internships[i].position,
@@ -315,13 +330,13 @@ class FilterTool {
 //main for testing
 // let cache = new InternshipCache()
 // cache.newInternship("Apple", "logo","software eng", 2, ["living", "git", "Java"], "desc", "https://intern-ally.co/", ["compsci"], ["USA"])
-// cache.newInternship("Apple2", "logo","data scientist", 4, ["dead"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
+// cache.newInternship("Apple2", "logo","data scientist", 10000, ["dead"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
 // internships = cache.getInternships()
 // console.log(cache.getCacheSize)
 // console.log(cache.internships)
 // let ft = new FilterTool()
 // searched = ft.searchBar(cache, "dead")
-// searched = ft.inSalaryRange(searched, 3, 5)
+// searched = ft.inSalaryRange(searched, 3, 5, 0)
 // searched = ft.citySearch(searched, ["usa"])
 // searched = ft.majorSearch(searched, ["Data Science"])
 // searched = ft.skillSearch(searched, ["dead"])
