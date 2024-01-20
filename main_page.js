@@ -78,6 +78,7 @@ function load_more() {
 }
 
 function filter_major() {
+    alert("works2");
     var num_majors = getSelectedMajors().length;
     if (num_majors > 0) {
         myFilteredCache = ft.majorSearch(myFilteredCache, getSelectedMajors());
@@ -86,6 +87,7 @@ function filter_major() {
 }
 
 function filter_city() {
+    alert("works!")
     var num_cities= getSelectedCities().length;
     if (num_cities > 0) {
         myFilteredCache = ft.citySearch(myFilteredCache, getSelectedCities());
