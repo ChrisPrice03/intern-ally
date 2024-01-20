@@ -7,7 +7,6 @@ Date: January 19, 2024
 Original Project: https://github.com/VishwaGauravIn/linkedin-jobs-api/blob/master/index.js
 */
 
-/*
 const cheerio = require("cheerio");
 const axios = require("axios");
 
@@ -204,4 +203,4 @@ function parseJobList(jobData) {
     .get();
 
   return jobObjects;
-}*/
+}
