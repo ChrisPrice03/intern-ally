@@ -97,6 +97,17 @@ class Database {
         if (this.accountMap.has(Account.email)) {
             return EMAIL_IN_USE
         }
+        var fs = require("fs")
+        fs.open('accounts.txt', 'a+', function(err, fd) {
+            if (err) {
+                return console.error(err);
+            }  
+        });
+        fs.writeFile('accounts.txt', Account.print(), function(err) {
+            if (err) {
+                return console.error(err);
+            }
+        });
         this.accountMap.set(Account.email, Account);
         this.passwordMap.set(Account.email, Account.password)
     }
