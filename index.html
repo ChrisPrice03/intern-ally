@@ -1,51 +1,47 @@
 <!DOCTYPE html>
+<html lang = "en">
+
 <head>
-<title>Intern-Ally</title>
-<link rel="stylesheet" type="text/css" href="main.css" />
-<p id="intro">Welcome to Intern-Ally! Where we help you find the next great step in your career</p>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intern-Ally</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
+
+<p id="intro">
+  Welcome to Intern-Ally! Where we help you find the next great step in your career
+</p>
+
 <body>
-  <p>Hello this is a test</p>
-  <button type="button" class="drop_down">Open Collapsible</button>
-  <div class = "drop_downs_content">
-    <form action="/action_page.php">
-        <label for="majors">Choose a major:</label>
-        <select name="majors" id="majors" multiple>
-          <option value="Computer Science">Computer Science</option>
-          <option value="Data Science">Data Science</option>
-          <option value="Artificial Intelligence">Artificial Intelligence</option>
-          <option value="Cybersecurity">Cybersecurity</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Submit">
-      </form>
 
-      <form action="/action_page.php">
-        <label for="location">Choose a major:</label>
-        <select name="location" id="location" multiple>
-          <option value="Chicago">Chicago</option>
-          <option value="Indianapolis">Indianapolis</option>
-          <option value="Los Angeles">Los Angeles</option>
-          <option value="New York City">New York City</option>
-        </select>
-        <br><br>
-        <input type="submit" value="Submit">
-      </form>
+<p>Hello this is a test</p>
 
-      <script>var coll = document.getElementsByClassName("drop_downs_content");
-        var i;
-        
-        for (i = 0; i < coll.length; i++) {
-          coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.display === "block") {
-              content.style.display = "none";
-            } else {
-              content.style.display = "block";
-            }
-          });
-        }</script>
-    </div>
+<form>
+  <label for="majors">Choose a major:</label>
+  <select name="majors" id="majors" multiple>
+    <option value="Computer Science">Computer Science</option>
+    <option value="Data Science">Data Science</option>
+    <option value="Artificial Intelligence">Artificial Intelligence</option>
+    <option value="Cybersecurity">Cybersecurity</option>
+  </select>
+  <br><br>
+  <button type = "button" onclick="getSelectedMajors()">Submit</button>
+
+</form>
+
+<script>
+  function getSelectedMajors() {
+    var selectedMajors = [];
+    var selectedElement_major = document.getElementById("majors");
+
+    for (var i = 0; i < selectedElement_major.options.length; i++) {
+      if (selectedElement_major[i].selected) {
+        selectedMajors.push(selectedElement_major.options[i].value);
+        console.log(selectedElement_major.options[i].value);
+      }
+    }
+  }
+</script>
 </body>
+
 </html>

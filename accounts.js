@@ -49,6 +49,23 @@ class Database {
     constructor() {
         this.accountMap = new Map();
         this.passwordMap = new Map();
+        var fs = require("fs")
+        fs.open('accounts.txt', 'r+', function(err, fd) {
+            if (err) {
+                return console.error(err);
+            }  
+        });
+        fs.writeFile('accounts.txt', 'email,password,InternshipPreferences\n', function(err) {
+            if (err) {
+                return console.error(err);
+            }
+        fs.readFile('accounts.txt', function (err, data) {
+            if (err) {
+                return console.error(err);
+            }
+            console.log(data.toString());
+            });
+        });
     }
     addAccount(Account) {
         if (this.accountMap.has(Account.email)) {
@@ -86,4 +103,3 @@ class Database {
 let base = new Database()
 base.addAccount(new Account("blah", "pass", null))
 console.log(base.passwordMap.get("blah"))
-console.log("ur mom")
