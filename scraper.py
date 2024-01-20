@@ -55,6 +55,16 @@ class Internships():
             else:
                 logo = logo_tag['src']
                 print(logo)
+
+            # find position
+            position_tag = soup.find("h1", class_="top-card-layout__title font-sans text-lg papabear:text-xl font-bold leading-open text-color-text mb-0 topcard__title")
+            if position_tag is None:
+                position = "aekjfo;i"
+                print("error2.5")
+            else:
+                position = position_tag.text
+                position = position.strip()
+                print(position)
             
             # find salary
             salary_tag = soup.find("div", class_="salary compensation__salary")
@@ -110,10 +120,8 @@ class Internships():
 
             print("\n")
             file = open("internship.txt", "a")
-            file.write(f"" + company + "||" + logo + "||" + str(salary) + "||" + description + "||" 
+            file.write(f"" + company + "||" + logo + "||" + position + "||" + str(salary) + "||" + description + "||" 
                       + link + "||" + location + "\n")
             file.close()
-
-        #print("test")
             
     print(findShip())
