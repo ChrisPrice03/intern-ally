@@ -1,5 +1,5 @@
 //one individual internship
-class Internship {
+export class Internship {
   constructor(company, logo, position, salary, skills, description, link, degree, locations) {
     this.company = company                  //str - company name
     this.logo = logo                        //file or link - used to display the logo
@@ -49,7 +49,7 @@ export class InternshipCache {
 }
 
 //class containing internship cache loaders and creaters
-class InternshipLoader {
+export class InternshipLoader {
     
     //all of the skills which will be supported by the program
     let skillBank = []
@@ -561,18 +561,18 @@ export class FilterTool {
 }
 
 //main for testing
-let cache = new InternshipCache()
-cache.newInternship("Apple", "logo","software eng", 2, ["living", "git", "Java"], "desc", "https://intern-ally.co/", ["compsci"], ["USA"])
-cache.newInternship("Apple2", "logo","data scientist", 10000, ["dead"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
-internships = cache.getInternships()
-console.log(cache.getCacheSize)
-console.log(cache.internships)
-let ft = new FilterTool()
-searched = ft.searchBar(cache, "dead")
-searched = ft.inSalaryRange(searched, 3, 5, 0)
-searched = ft.citySearch(searched, ["usa"])
-searched = ft.majorSearch(searched, ["Data Science"])
-searched = ft.skillSearch(searched, ["dead"])
+// let cache = new InternshipCache()
+// cache.newInternship("Apple", "logo","software eng", 2, ["living", "git", "Java"], "desc", "https://intern-ally.co/", ["compsci"], ["USA"])
+// cache.newInternship("Apple2", "logo","data scientist", 10000, ["dead"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
+// internships = cache.getInternships()
+// console.log(cache.getCacheSize)
+// console.log(cache.internships)
+// let ft = new FilterTool()
+// searched = ft.searchBar(cache, "dead")
+// searched = ft.inSalaryRange(searched, 3, 5, 0)
+// searched = ft.citySearch(searched, ["usa"])
+// searched = ft.majorSearch(searched, ["Data Science"])
+// searched = ft.skillSearch(searched, ["dead"])
 console.log("After Search")
 console.log(searched)
 
