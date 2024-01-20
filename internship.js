@@ -24,7 +24,7 @@ class Internship {
 }
 
 //a collection of Internships
-class InternshipCache {
+export class InternshipCache {
 
   //creates an internship cache object
   constructor() {
@@ -49,7 +49,7 @@ class InternshipCache {
 }
 
 //class containing filter funtions
-class FilterTool {
+export class FilterTool {
     
     //helper function for searchInternshipForQuery
     //searches for the needle in the haystack (similar to strstr)

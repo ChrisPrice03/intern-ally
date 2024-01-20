@@ -6,6 +6,45 @@ Date: January 19, 2024
 Original Project: https://github.com/VishwaGauravIn/linkedin-jobs-api/blob/master/index.js
 */
 
+
+//Caitlin Time
+function make_cache(filepath) {
+  internship = internship.InternshipLoader();
+}
+
+function getSelectedMajors() {
+  alert("working");
+  var selectedMajors = [];
+  var selectedElement_major = document.getElementById("major_select");
+
+  for (var i = 0; i < selectedElement_major.options.length; i++) {
+    if (selectedElement_major[i].selected) {
+      selectedMajors.push(selectedElement_major.options[i].value);
+    }
+  }
+
+  FilterTool.majorSearch(tempInternshipCache, selectedMajors);
+}
+
+function getSelectedLocations() {
+  alert("working");
+  var selectedLocations = [];
+  var selectedElement_loc = document.getElementById("location_select");
+
+  for (var i = 0; i < selectedElement_loc.options.length; i++) {
+    if (selectedElement_major[i].selected) {
+      selectedMajors.push(selectedElement_major.options[i].value);
+    }
+  }
+
+  internship.majorSearch(tempInternshipCache, selectedMajors);
+}
+
+function load_more() {
+  internship.updateCache(filepath, internshipCache);
+}
+
+//Chris time
 const cheerio = require("cheerio");
 const axios = require("axios");
 
