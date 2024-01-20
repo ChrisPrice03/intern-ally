@@ -1,21 +1,19 @@
-# Pete-s-Paradise
+# InternAlly
 
-Do you hate student debt?
+Do you have student debt?
 
-Do you wish that you could pay your tuition with dining dollars?
+Do you parents bully you for not having a job?
 
-Do you ever want to know what it feels like to have a PHD from Purdue?
+Do you find that job hunting sites are always too confusing?
 
-If you answered yes to any of these questions, Pete's Paradise is the game for you!
+If you answered yes to any of these questions, InternAlly is the service for you!
 
-Click on Pete to earn dining dollars, make him happy and gain prestige 😎
+Begin exporing the numerous features on our internship finding site to help find the answers to all of these questions
 
 ENJOY!
 
-## How to Run?
+## How to Access?
 
-Clone repository
-
-Run `index.html`
+Simply go to 'intern-ally.co'!
 
 
