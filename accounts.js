@@ -1,3 +1,9 @@
+const EMAIL_IN_USE = -1
+const ACCOUNT_NOT_FOUND = -2
+const VALID = 1
+
+// textfile format:
+// email,password,prefSalary,prefSkills,prefDegree,prefLocation\n
 // class InternshipPreferences
 class InternshipPreferences {
     constructor(prefSalary, prefSkills, prefDegree, prefLocation) {
@@ -30,6 +36,9 @@ class InternshipPreferences {
     getLocation() {
         return this.prefLocation
     }
+    printPref() {
+        return this.getSalary() + "," + this.getSkills() + "," + this.getDegree() + "," + this.getLocation() + "\n";
+    }
 }
 
 // account class
@@ -42,30 +51,47 @@ class Account {
     getPreferences() {
         return this.InternshipPreferences
     }
+    print() {
+        return this.email + "," + this.password + "," + this.getPreferences().printPref();
+    }
 }
   
 // database class
 class Database {
     constructor() {
-        this.accountMap = new Map();
-        this.passwordMap = new Map();
+        this.accountMap = new Map(); // key: email / val: Account
+        this.passwordMap = new Map(); // key: email / val: password
         var fs = require("fs")
-        fs.open('accounts.txt', 'r+', function(err, fd) {
+        fs.open('accounts.txt', 'a+', function(err, fd) {
             if (err) {
                 return console.error(err);
             }  
         });
-        fs.writeFile('accounts.txt', 'email,password,InternshipPreferences\n', function(err) {
+        /* test
+        fs.writeFile('accounts.txt', 'email,poo\n', function(err) {
             if (err) {
                 return console.error(err);
             }
+            fs.readFile('accounts.txt', function (err, data) {
+                if (err) {
+                    return console.error(err);
+                }
+                console.log(data.toString());
+            });
+        });
+        */
+        let buffer = new String;
         fs.readFile('accounts.txt', function (err, data) {
             if (err) {
                 return console.error(err);
             }
-            console.log(data.toString());
-            });
+            buffer = data.toString();
         });
+        let accounts = new Array;
+        accounts = buffer.split('\n')
+        for (let i = 0; accounts.size; i++) {
+            this.addAccount(new Account(accounts[i].toString().split(',')[0], accounts[i].toString().split(',')[1]), new InternshipPreferences(accounts[i].toString().split(',')[2], accounts[i].toString().split(',')[3], accounts[i].toString().split(',')[4], accounts[i].toString().split(',')[5]))
+        }
     }
     addAccount(Account) {
         if (this.accountMap.has(Account.email)) {
@@ -74,32 +100,35 @@ class Database {
         this.accountMap.set(Account.email, Account);
         this.passwordMap.set(Account.email, Account.password)
     }
-    deleteAccount(Account) {
-        if (!this.accountMap.has(Account.email)) {
+    deleteAccount(email) {
+        if (!this.accountMap.has(email)) {
             return ACCOUNT_NOT_FOUND
         }
-        this.accountMap.delete(Account.email)
-        this.passwordMap.delete(Account.email)
+        // implement file io
+        this.accountMap.delete(email)
+        this.passwordMap.delete(email)
     }
-    verifyAccount(Account, password) {
-        if (!this.accountMap.has(Account.email)) {
+    verifyAccount(email, password) {
+        if (!this.accountMap.has(email)) {
             return ACCOUNT_NOT_FOUND
         }
-        if (this.passwordMap.get(Account.email) == password) {
+        if (this.passwordMap.get(email) == password) {
             return VALID
         } else {
             return ACCOUNT_NOT_FOUND
         }
     }
-    getPreferences(Account) {
-        if (!this.accountMap.has(Account.email)) {
+    getPreferences(email) {
+        if (!this.accountMap.has(email)) {
             return ACCOUNT_NOT_FOUND
         }
-        return this.accountMap.get(Account.email).InternshipPreferences
+        return this.accountMap.get(email).InternshipPreferences
     }
 }
 
 // main for test
 let base = new Database()
-base.addAccount(new Account("blah", "pass", null))
+base.addAccount(new Account("blah", "pass", new InternshipPreferences("a","b","c","d")))
 console.log(base.passwordMap.get("blah"))
+console.log(base.accountMap.get("blah").print())
+//console.log(base.verifyAccount())
