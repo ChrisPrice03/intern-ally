@@ -10,12 +10,16 @@ from bs4 import BeautifulSoup
 from array import *
 
 allShips = [] # all internships on LinkedIn page
-shipInfo = [] # contains intership information (String)
-shipInfo.append([])
-# ^^ Formating: "company||logo||salary||skill1|skill2||description||link||degree1|degree2||location1|location2"
+# Formating for internship.txt: 
+# "company||logo||salary||skill1|skill2||description||link||degree1|degree2||location1|location2"
 
 class Internships():
     def findShip():
+        # overwrite file
+        temp = open("internship.txt", "w")
+        temp.write("")
+        temp.close()
+
 
         # LinkedIn SearchJobs page is the base url
         search_page = requests.get("https://www.linkedin.com/jobs/search?trk=guest_homepage-basic_guest_nav_menu_jobs&position=1&pageNum=0")
@@ -51,6 +55,16 @@ class Internships():
             else:
                 logo = logo_tag['src']
                 print(logo)
+
+            # find position
+            position_tag = soup.find("h1", class_="top-card-layout__title font-sans text-lg papabear:text-xl font-bold leading-open text-color-text mb-0 topcard__title")
+            if position_tag is None:
+                position = "aekjfo;i"
+                print("error2.5")
+            else:
+                position = position_tag.text
+                position = position.strip()
+                print(position)
             
             # find salary
             salary_tag = soup.find("div", class_="salary compensation__salary")
@@ -105,6 +119,9 @@ class Internships():
                 print(location)
 
             print("\n")
-        #print("test")
+            file = open("internship.txt", "a")
+            file.write(f"" + company + "||" + logo + "||" + position + "||" + str(salary) + "||" + description + "||" 
+                      + link + "||" + location + "\n")
+            file.close()
             
     print(findShip())
