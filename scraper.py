@@ -49,9 +49,10 @@ class Internships():
                 logo = "aekjfo;i"
                 print("error2")
             else:
-                logo = logo_tag.attrs['src']
+                logo = logo_tag['src']
                 print(logo)
             
+            # find salary
             salary_tag = soup.find("div", class_="salary compensation__salary")
             if salary_tag is None:
                 salary = "aekjfo;i"
@@ -74,16 +75,36 @@ class Internships():
                 salary = salary.replace(",", "")
                 salary = float(salary) * multiplier
                 print(salary)
+    
+            # find description
+            description_tag = soup.find("div", class_="show-more-less-htmls")
+            if description_tag is None:
+                description = "aekjfo;i"
+                print("error3")
+            else:
+                description = description_tag.text
+                print(description)
             
-            print("\n")
+            # find link
+            link_tag = soup.find("button", class_="temp")
+            if link_tag is None:
+                link = "aekjfo;i"
+                print("error4")
+            else:
+                link = link_tag.text
+                print(link)
+            
+            # find location
+            location_tag = soup.find("span", class_="topcard__flavor topcard__flavor--bullet")
+            if location_tag is None:
+                location = "aekjfo;i"
+                print("error5")
+            else:
+                location = location_tag.text
+                location = location.strip()
+                print(location)
 
-            """
-            skills = 
-            description = 
-            link = 
-            degree = 
-            locations = 
-            """
+            print("\n")
         #print("test")
             
     print(findShip())
