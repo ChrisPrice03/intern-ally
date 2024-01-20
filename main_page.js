@@ -1,3 +1,4 @@
+import * as index from 'index.js';
 function getSelectedMajors() {
     alert("working");
     var selectedMajors = [];
@@ -8,4 +9,6 @@ function getSelectedMajors() {
             selectedMajors.push(selectedElement_major.options[i].value);
         }
     }
+
+    index.majorSearch(tempInternshipCache, selectedMajors);
 }
