@@ -10,12 +10,16 @@ from bs4 import BeautifulSoup
 from array import *
 
 allShips = [] # all internships on LinkedIn page
-shipInfo = [] # contains intership information (String)
-shipInfo.append([])
-# ^^ Formating: "company||logo||salary||skill1|skill2||description||link||degree1|degree2||location1|location2"
+# Formating for internship.txt: 
+# "company||logo||salary||skill1|skill2||description||link||degree1|degree2||location1|location2"
 
 class Internships():
     def findShip():
+        # overwrite file
+        temp = open("internship.txt", "w")
+        temp.write("")
+        temp.close()
+
 
         # LinkedIn SearchJobs page is the base url
         search_page = requests.get("https://www.linkedin.com/jobs/search?trk=guest_homepage-basic_guest_nav_menu_jobs&position=1&pageNum=0")
@@ -105,6 +109,11 @@ class Internships():
                 print(location)
 
             print("\n")
+            file = open("internship.txt", "a")
+            file.write(f"" + company + "||" + logo + "||" + str(salary) + "||" + description + "||" 
+                      + link + "||" + location + "\n")
+            file.close()
+
         #print("test")
             
     print(findShip())
