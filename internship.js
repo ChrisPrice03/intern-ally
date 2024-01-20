@@ -31,10 +31,22 @@ export class InternshipCache {
     this.internships = []
   }
 
+  //checks if an internship is already in the cache
+  checkIfNewInternship(position) {
+    for(let i = 0; i < internships.length; i++) {
+      if (internships[i].company == position.company && internships[i].position == position.position && internships[i].description == position.description && internships[i].locations == position.locations) {
+        return false
+      }
+    }
+    return true
+  }
+
   //creates a new internship and adds it to the cache
   newInternship(company, logo, positon, salary, skills, description, link, degree, locations) {
     let position = new Internship(company, logo, positon, salary, skills, description, link, degree, locations)
-    this.internships.push(position)
+    if (this.checkIfNewInternship()) {
+      this.internships.push(position)
+    }
   }
 
   //returns the entire current cache
