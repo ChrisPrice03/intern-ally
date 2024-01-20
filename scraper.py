@@ -48,12 +48,12 @@ class Internships():
                 print(company)
 
             # find logo
-            logo_tag = soup.find("img", class_="artdeco-entity-image artdeco-entity-image--square-5 lazy-loaded")
+            logo_tag = soup.find("a", target="_self").find("img")
             if logo_tag is None:
-                logo = "aekjfo;i"
-                print("error2")
+                   logo = "aekjfco;i"
+                   print("error2")
             else:
-                logo = logo_tag['src']
+                logo = logo_tag.attrs['data-ghost-url']
                 print(logo)
 
             # find position
