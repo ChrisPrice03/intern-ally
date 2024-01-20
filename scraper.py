@@ -8,6 +8,7 @@ Created: Saturday, January 20, 2024
 import requests
 from bs4 import BeautifulSoup
 from array import *
+#from selenium.webdriver import ActionChains
 
 allShips = [] # all internships on LinkedIn page
 # Formating for internship.txt: 
@@ -22,7 +23,7 @@ class Internships():
 
 
         # LinkedIn SearchJobs page is the base url
-        search_page = requests.get("https://www.linkedin.com/jobs/search?trk=guest_homepage-basic_guest_nav_menu_jobs&position=1&pageNum=0")
+        search_page = requests.get("https://www.linkedin.com/jobs/search?keywords=&location=United%20States&geoId=103644278&f_TPR=&f_E=1&position=1&pa")
         src = search_page.content
         soup = BeautifulSoup(src, 'lxml')
 
@@ -33,7 +34,6 @@ class Internships():
             allShips.append(ship_url)
 
         for ship_page in allShips:
-            #print(ship_page)
             src = requests.get(ship_page).content
             soup = BeautifulSoup(src, 'lxml')
             
@@ -41,36 +41,36 @@ class Internships():
             company_tag = soup.find("a", class_="topcard__org-name-link topcard__flavor--black-link")
             if company_tag is None:
                 company = "aekjfo;i"
-                print("error1")
+                #print("error1")
             else:
                 company = company_tag.text
                 company = company.strip()
-                print(company)
+                #print(company)
 
             # find logo
             logo_tag = soup.find("a", target="_self")
             if logo_tag is None:
-                   logo = "aekjfco;i"
-                   print("error2")
+                logo = "aekjfco;i"
+                #print("error2")
             else:
                 logo = logo_tag.find("img").attrs['data-ghost-url']
-                print(logo)
+                #print(logo)
 
             # find position
             position_tag = soup.find("h1", class_="top-card-layout__title font-sans text-lg papabear:text-xl font-bold leading-open text-color-text mb-0 topcard__title")
             if position_tag is None:
                 position = "aekjfo;i"
-                print("error2.5")
+                #print("error2.5")
             else:
                 position = position_tag.text
                 position = position.strip()
-                print(position)
+                #print(position)
             
             # find salary
             salary_tag = soup.find("div", class_="salary compensation__salary")
             if salary_tag is None:
                 salary = "aekjfo;i"
-                print("no salary")
+                #print("no salary")
             else:
                 salary = salary_tag.text
                 salary = salary.strip()
@@ -88,39 +88,51 @@ class Internships():
                 salary = salary[1:base_salary]
                 salary = salary.replace(",", "")
                 salary = float(salary) * multiplier
-                print(salary)
+                #print(salary)
     
             # find description
-            description_tag = soup.find("div", class_="core-section-container__content break-words").find("div").find("div")
-            #print(description_tag)
+            description_tag = soup.find("div", class_="core-section-container__content break-words")
+            
             if description_tag is None:
                 description = "aekjfo;i"
-                print("error3")
+                #print("error3")
+            else:
+                description_tag = description_tag.find("div")
+            if description_tag is None:
+                description = "aekjfo;i"
+                #print("error3")
+            else:
+                description_tag = description_tag.find("div")
+            
+            if description_tag is None:
+                description = "aekjfo;i"
+                #print("error3")
             else:
                 description = description_tag.text
                 description = description.strip()
-                print(description)
+                description = description.replace("\n", "")
+                #print(description)
             
             # find link
             link_tag = soup.find("button", class_="temp")
             if link_tag is None:
                 link = "aekjfo;i"
-                print("error4")
+                #print("error4")
             else:
                 link = link_tag.text
-                print(link)
+                #print(link)
             
             # find location
             location_tag = soup.find("span", class_="topcard__flavor topcard__flavor--bullet")
             if location_tag is None:
                 location = "aekjfo;i"
-                print("error5")
+                #print("error5")
             else:
                 location = location_tag.text
                 location = location.strip()
-                print(location)
+                #print(location)
 
-            print("\n")
+            #print("\n")
             file = open("internship.txt", "a")
             file.write(f"" + company + "||" + logo + "||" + position + "||" + str(salary) + "||" + description + "||" 
                       + link + "||" + location + "\n")
