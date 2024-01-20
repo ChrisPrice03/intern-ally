@@ -54,7 +54,7 @@ export class InternshipLoader {
     //all of the skills which will be supported by the program
     let skillBank = []
     
-    get skilBank() {
+    get skillBank() {
         return this.skillBank
     }
     
