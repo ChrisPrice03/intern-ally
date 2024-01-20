@@ -67,19 +67,6 @@ class Database {
                 return console.error(err);
             }  
         });
-        /* test
-        fs.writeFile('accounts.txt', 'email,poo\n', function(err) {
-            if (err) {
-                return console.error(err);
-            }
-            fs.readFile('accounts.txt', function (err, data) {
-                if (err) {
-                    return console.error(err);
-                }
-                console.log(data.toString());
-            });
-        });
-        */
         let buffer = new String;
         fs.readFile('accounts.txt', function (err, data) {
             if (err) {
@@ -108,14 +95,35 @@ class Database {
                 return console.error(err);
             }
         });
-        this.accountMap.set(Account.email, Account);
+        this.accountMap.set(Account.email, Account)
         this.passwordMap.set(Account.email, Account.password)
     }
     deleteAccount(email) {
         if (!this.accountMap.has(email)) {
             return ACCOUNT_NOT_FOUND
         }
-        // implement file io
+        let a = accountMap.get(email)
+        var fs = require("fs")
+        fs.open('accounts.txt', 'a+', function(err, fd) {
+            if (err) {
+                return console.error(err);
+            }  
+        });
+        let buffer = new String;
+        fs.readFile('accounts.txt', function (err, data) {
+            if (err) {
+                return console.error(err);
+            }
+            buffer = data.toString();
+        });
+        buffer = buffer.split("\n")
+        let i = 1;
+        for (i; i < buffer.size; i++) {
+            if (buffer[i] == a.print()) {
+                break;
+            }
+        }
+        // account on line i
         this.accountMap.delete(email)
         this.passwordMap.delete(email)
     }
