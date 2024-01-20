@@ -136,6 +136,25 @@ class FilterTool {
         return false
     }
     
+    //helper function for majorSearch
+    //searches one particular internship for major(s)
+    //
+    //@param internship - an internship object to look in
+    //@param majors - an array of majors to look for
+    //
+    //@return true or false depending if conditions are met
+    
+    searchInternshipForMajor(internship, majors) {
+        for (let i = 0; i < majors.length; i++) {
+            for (let j = 0; j < internship.degree.length; j++) {
+                if (this.search(internship.degree[j], majors[i])) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
     /////////////////////////////////////////////////////
     //BELOW THIS LINE ARE USABLE FUNCTIONS FOR THE SITE//
     /////////////////////////////////////////////////////
@@ -220,6 +239,32 @@ class FilterTool {
         }
         return sortedInternships
     }
+    
+    //This function is used to filter an internship cache based on major(s)
+    //
+    //@param internshipCache - the InternshipCache object to search from
+    //@param majors - an array of cities which are considered for internships
+    //
+    //@return An InternshipCache object of the sorted internships
+    
+    majorSearch(internshipCache, majors) {
+        let sortedInternships = new InternshipCache()
+        for (let i = 0; i < internshipCache.getCacheSize; i++) {
+            if (this.searchInternshipForMajor(internshipCache.internships[i], majors)) {
+                sortedInternships.newInternship(internshipCache.internships[i].company,
+                                                internshipCache.internships[i].logo,
+                                                internshipCache.internships[i].position,
+                                                internshipCache.internships[i].salary,
+                                                internshipCache.internships[i].skills,
+                                                internshipCache.internships[i].description,
+                                                internshipCache.internships[i].link,
+                                                internshipCache.internships[i].degree,
+                                                internshipCache.internships[i].locations
+                )
+            }
+        }
+        return sortedInternships
+    }
 }
 
 //main for testing
@@ -233,6 +278,7 @@ class FilterTool {
 // searched = ft.searchBar(cache, "dead")
 // searched = ft.inSalaryRange(searched, 3, 5)
 // searched = ft.citySearch(searched, ["usa"])
+// searched = ft.majorSearch(searched, ["Data Science"])
 // console.log("After Search")
 // console.log(searched)
 
