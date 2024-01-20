@@ -1,6 +1,5 @@
-body{
-  padding: 25px;
-}
-.title {
-	color: #5C6AC4;
+#intro {
+    text-align: center;
+    background-color: aquamarine;
+    font-size: larger;
 }
