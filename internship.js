@@ -205,6 +205,79 @@ class InternshipLoader {
      
       return cache
   }
+  
+    //this function will update the given cache with new information
+    //it will read in data from the given file path
+    //
+    //@param filePath - the location of the file generated from webscraping
+    //                  the file is in the following format:
+    //                  company||logo||position||salary||description||link||location
+    //@param internshipCache - the cache all of the new info will be added to
+    //
+    //@return an InternshipCache object containing all of the objects updated from the file
+  
+    updateCache(filePath, cache) {
+        var file = new File(filePath)
+        var str = "";
+      
+        //reading
+        file.open("r")
+        while (!file.eof) {
+            str = file.readln()
+            
+            let segments = str.split("||")
+            
+            let company = "null"
+            if (segments[0] != "aekjfo;i") {
+                company = segments[0]
+            }
+            
+            let logo = "null"
+            if (segments[1] != "aekjfo;i") {
+                logo = segments[1]
+            }
+            
+            let position = "null"
+            if (segments[2] != "aekjfo;i") {
+                position = segments[2]
+            }
+            
+            let salary = -1
+            if (segments[3] != "aekjfo;i") {
+                salary = segments[3]
+            }
+            
+            let skills ["null"]
+            if (segments[4] != "aekjfo;i") {
+                skills = this.locateSkills(segments[4])
+            }
+            
+            let description = "null"
+            if (segments[4] != "aekjfo;i") {
+                description = segments[4]
+            }
+            
+            let link = "null"
+            if (segments[5] != "aekjfo;i") {
+                link = segments[5]
+            }
+            
+            let degree = ["null"]
+            if (segments[4] != "aekjfo;i") {
+                degree = this.locateDegrees(segments[4])
+            }
+
+            let locations = ["null"]
+            if (segments[6] != "aekjfo;i") {
+                locations = this.locateLocations(segments[6])
+            }
+
+            cache.newInternship(company, logo, positon, salary, skills, description, link, degree, locations)
+      }
+      file.close()
+     
+      return cache
+  }
 }
 
 
