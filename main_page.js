@@ -8,10 +8,6 @@ let myGeneralCache = new InternshipCache();
 let myFilteredCache = new InternshipCache();
 let ft = new FilterTool();
 
-function alertMe() {
-  window.alert("Button clicked!");
-}
-
 function onLoad() {
     // const { spawn } = require('child_process');
     // const scraper = spawn('python', ['scraper.py'])
