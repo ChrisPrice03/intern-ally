@@ -649,13 +649,7 @@ let myGeneralCache = new InternshipCache();
 let myFilteredCache = new InternshipCache();
 let ft = new FilterTool();
 
-function alertMe() {
-    window.alert("Button clicked!");
-}
-
 function onLoad() {
-    myGeneralCache = myInternLoader.loadCache('internship.txt');
-    window.alert(myGeneralCache.getCacheSize);
     myFilteredCache = myGeneralCache;
     print_postings();
 }
@@ -669,7 +663,6 @@ function filterNow() {
 }
 
 function getSelectedMajors() {
-    alert("working");
     var selectedMajors = [];
     var selectedElement_major = document.getElementById("major_select");
 
@@ -720,7 +713,6 @@ function load_more() {
 }
 
 function filter_major() {
-    alert("works2");
     var num_majors = getSelectedMajors().length;
     if (num_majors > 0) {
         myFilteredCache = ft.majorSearch(myFilteredCache, getSelectedMajors());
@@ -729,7 +721,6 @@ function filter_major() {
 }
 
 function filter_city() {
-    alert("works!")
     var num_cities= getSelectedCities().length;
     if (num_cities > 0) {
         myFilteredCache = ft.citySearch(myFilteredCache, getSelectedCities());
@@ -811,7 +802,6 @@ function filter_salary() {
 // }
 
 function print_postings() {
-    alert(myFilteredCache.getCacheSize+ ":\n" + myFilteredCache.internships[0] + "\n" + myFilteredCache.internships[1]);
     var internshipPostings = document.getElementById("internship_postings");
     myFilteredCache.internships.forEach(function(item) {
         var divElement = document.createElement("div");
@@ -846,8 +836,7 @@ function print_postings() {
 
         var learn_button = document.createElement("button");
         learn_button.textContent = "Learn More";
-        learn_button.onclick = alert("This is going to open a link when we fix it lol");
-
+        
         job_logo_div.appendChild(item_logo);
         job_logo_div.appendChild(learn_button);
 
