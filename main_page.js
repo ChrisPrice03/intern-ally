@@ -8,15 +8,8 @@ let myGeneralCache = new InternshipCache();
 let myFilteredCache = new InternshipCache();
 let ft = new FilterTool();
 
-
-            function runPythonScript() {
-                var pythonScriptPath = "./scraper.py";
-                subprocess.run(["python", pythonScriptPath]);
-                        onLoad();
-            }
-
-window.onload = function () {
-        alert("new on load")
+function alertMe() {
+  window.alert("Button clicked!");
 }
 
 function onLoad() {
