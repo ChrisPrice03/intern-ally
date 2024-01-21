@@ -48,12 +48,12 @@ class Internships():
                 print(company)
 
             # find logo
-            logo_tag = soup.find("a", target="_self").find("img")
+            logo_tag = soup.find("a", target="_self")
             if logo_tag is None:
                    logo = "aekjfco;i"
                    print("error2")
             else:
-                logo = logo_tag.attrs['data-ghost-url']
+                logo = logo_tag.find("img").attrs['data-ghost-url']
                 print(logo)
 
             # find position
@@ -91,12 +91,14 @@ class Internships():
                 print(salary)
     
             # find description
-            description_tag = soup.find("div", class_="show-more-less-htmls")
+            description_tag = soup.find("div", class_="core-section-container__content break-words").find("div").find("div")
+            #print(description_tag)
             if description_tag is None:
                 description = "aekjfo;i"
                 print("error3")
             else:
                 description = description_tag.text
+                description = description.strip()
                 print(description)
             
             # find link
