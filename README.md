@@ -22,6 +22,6 @@ InternAlly is a web app that aids college students in discovering available inte
 
 ## How to Access?
 
-Simply go to 'intern-ally.co'!
+Simply go to intern-ally.co !
 
 
