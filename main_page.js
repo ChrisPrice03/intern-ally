@@ -12,6 +12,7 @@ let ft = new FilterTool();
             function runPythonScript() {
                 var pythonScriptPath = "./scraper.py";
                 subprocess.run(["python", pythonScriptPath]);
+                        onLoad();
             }
         
 
@@ -23,6 +24,7 @@ function onLoad() {
     // });
     //makes general cache
     myGeneralCache = myInternLoader.loadCache('internship.txt');
+            alert(myGeneralCache.length);
 
     //myGeneralCache.internships[:].info
     myFilteredCache = myGeneralCache;
