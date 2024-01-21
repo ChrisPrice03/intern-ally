@@ -134,7 +134,7 @@ class Internships():
                     #print("error4")
                 else:
                     link = link_tag.attrs['href']
-                    print(link)
+                    #print(link)
                 
                 # find location
                 location_tag = soup.find("span", class_="topcard__flavor topcard__flavor--bullet")
