@@ -23,6 +23,7 @@ function onLoad() {
     //     console.log("working");
     // });
     //makes general cache
+    alert("on Load")
     myGeneralCache = myInternLoader.loadCache('internship.txt');
             alert(myGeneralCache.length);
 
