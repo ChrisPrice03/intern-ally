@@ -266,8 +266,10 @@ class InternshipCache {
         }
         file.close()
        */
-        cache.newInternship("Apple", "logo","software eng", 2, ["living", "git", "Java"], "desc", "https://intern-ally.co/", ["compsci"], ["USA"])
+        cache.newInternship("Apple", "logo","Software Engineer", 2, ["Java", "git", "C"], "desc", "https://intern-ally.co/", ["Computer Science"], ["USA"])
+        cache.newInternship("Google", "logo","Data Scientist", 2, ["R", "python", "sql"], "desc", "https://intern-ally.co/", ["Data Science"], ["USA"])
 
+        
         return cache
     }
     
