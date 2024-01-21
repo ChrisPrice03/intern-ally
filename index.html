@@ -1,66 +1,201 @@
 <!DOCTYPE html>
-<html lang = "en">
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Intern-Ally</title>
-  <link rel="stylesheet" type="text/css" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webpage Design</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #050606;
+            height: 85px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.5); /* Added property */
+        }
+        nav {
+            background-color: #608f98;
+            height: calc(100vh - 50px);
+            width: 350px;
+            float: left;
+            position: fixed;
+            top: 85px;
+            z-index: 1;
+        }
+        nav ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        nav ul li {
+            padding: 10px;
+            color:white;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        nav ul li:hover {
+            background-color: #85dcf3;
+            color: #050606;
+        }
+        
+           form {
+            margin: 10px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            padding: 23px 20px;
+            margin: 15px 0;
+            font-size: 20px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 4px;
+        }
+
+        button[type=submit] {
+            width: 100%;
+            background-color: #38626b;
+            color: white;
+            padding: 12px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type=submit]:hover {
+            background-color: #85dcf3;
+            color: #050606;
+        }
+        
+       main {
+           background-color:#85dcf3 ;
+           height : calc(100vh - 50px);
+           margin-left :375px ;
+           margin-top: 75px;
+           overflow-y: scroll;
+           padding: 20px;
+           box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2); /* Added property */
+       }
+
+       footer{
+           position:absolute ;
+           bottom :0 ;
+           width :calc(100% - 200px) ;
+           height :50px ;
+           background-color:#ADD8E6 ; 
+           display:none;
+       }
+
+       .white-box {
+           background-color: white;
+           color: black;
+           padding: 20px;
+           margin: 20px;
+           box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+           border-radius: 5px;
+       }
+
+       h1 {
+           font-size: 36px;
+           font-weight: bold;
+           text-align: center;
+           margin-top: 30px;
+           margin-bottom: 50px;
+           text-transform: uppercase;
+           letter-spacing: 2px;
+           left-padding: 50px
+           
+       }
+
+       p {
+           font-size: 18px;
+           line-height: 1.5;
+           margin-bottom: 20px;
+       }
+
+       button {
+           background-color: #050606;
+           color: white;
+           border: none;
+           padding: 10px 20px;
+           font-size: 18px;
+           font-weight: bold;
+           text-transform: uppercase;
+           letter-spacing: 2px;
+           cursor: pointer;
+           transition: all 0.3s ease;
+       }
+
+       button:hover {
+           background-color: #85dcf3;
+           color: #050606;
+       }
+       
+       ourLogo{
+           
+       }
+
+    </style>
 </head>
-
-<p id="intro">
-  Welcome to Intern-Ally! Where we help you find the next great step in your career
-</p>
-
 <body>
-<script src="main_page.js"></script>
 
-<p>Call me gustavo since I want your name and number ;)</p>
+<header style="background-color: #050606; height: 85px; position: fixed; top: 10; width: 100%; z-index: 1; align-items: center; justify-content: center">
+     <img src="https://cdn.discordapp.com/attachments/1198079768134950956/1198448890496688229/LOGO.png?ex=65bef181&is=65ac7c81&hm=c3db6d9b947487e1e267a10da0f7762e17fbf8e380c45a5aa4b2d469ef9fdae9&" id="ourLogo" alt="Our Logo" width="75px" height="75px" style="margin-top: 5px; margin-left: 5px;">
+    <h1 style="color: white; font-size: 30px; font-weight: bold; text-align: center; margin-top: -60px; text-transform: none;"> InternAlly -- "Your Friend on the Inside" 
+   
+    </h1>
+</header>
 
-<form>
+<nav>
+    <form>
+        <input type="text" placeholder="Search...">
+        <button type="submit">Search</button>
+    </form>
+    <ul>
+      <li>Home</li> 
+      <li>About</li> 
+      <li>Contact</li>
+    </ul>
+</nav>
+
+<main>
+    <div class="white-box">
+        <h2>Box 1</h2>
+        <p>This is the content of box 1.</p>
+        <button>Learn More</button>
+    </div>
+    <div class="white-box">
+        <h2>Box 2</h2>
+        <p>This is the content of box 2.</p>
+        <button>Learn More</button>
+    </div>
+    <div class="white-box">
+        <h2>Box 2</h2>
+        <p>This is the content of box 2.</p>
+        <button>Learn More</button>
+    </div>
+    <div class="white-box">
+        <h2>Box 2</h2>
+        <p>This is the content of box 2.</p>
+        <button>Learn More</button>
+    </div>
+</main>
+
+<footer>
+    <button style="background-color: black; color: white;">Home</button>
+    <button style="background-color: black; color: white;">About</button>
+    <button style="background-color: black; color: white;">Contact</button>
+</footer>
 
 
-
-  <label for="major_select">Choose a major (if you pick cs pls shower):</label>
-  <select name="majors" id="major_select" multiple>
-    <option value="Computer Science">Computer Science</option>
-    <option value="Data Science">Data Science</option>
-    <option value="Artificial Intelligence">Artificial Intelligence</option>
-    <option value="Cybersecurity">Cybersecurity</option>
-  </select>
-
-</form>
-
-<form>
-  <label for="city_select">Choose a location, but only if you live somewhere cool:</label>
-  <select name="skills" id="city_select" multiple>
-    <option value="Salem">Salem</option>
-    <option value="Forks">Forks</option>
-    <option value="Scranton">Scranton</option>
-    <option value="New York City">New York City</option>
-  </select>
-</form>
-
-<form>
-  <label for="skill_select">List your MAD RADICAL SKILLZZZZZ:</label>
-  <select name="skillz" id="skill_select" multiple>
-    <option value="C">C</option>
-    <option value="python">Python</option>
-    <option value="Java">Java</option>
-    <option value="Mario Kart">Mario Kart</option>
-    <option value="R Programming">R Programming</option>
-  </select>
-</form>
-
-<button type = "button" onclick="filterNow()">Filter!</button>
-
-<div id = "internships">
-
-</div>
-
-<div id = "bottom">
-  <button type = "button">Load More?</button>
-</div>
 </body>
-
 </html>
