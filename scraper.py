@@ -91,14 +91,26 @@ class Internships():
                 print(salary)
     
             # find description
-            description_tag = soup.find("div", class_="core-section-container__content break-words").find("div").find("div")
-            #print(description_tag)
+            description_tag = soup.find("div", class_="core-section-container__content break-words")
+            
+            if description_tag is None:
+                description = "aekjfo;i"
+                print("error3")
+            else:
+                description_tag = description_tag.find("div")
+            if description_tag is None:
+                description = "aekjfo;i"
+                print("error3")
+            else:
+                description_tag = description_tag.find("div")
+            
             if description_tag is None:
                 description = "aekjfo;i"
                 print("error3")
             else:
                 description = description_tag.text
                 description = description.strip()
+                description = description.replace("\n", "")
                 print(description)
             
             # find link
