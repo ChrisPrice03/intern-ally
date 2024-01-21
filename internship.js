@@ -357,12 +357,12 @@ export class FilterTool {
     //
     //@param internship - an internship object to look in
     //@param minSalary - the min salary to look for
-    //@param maxSalary - the max salary to look for
     //@param timePeriod - an int representing either hourly (0) or salary (1)
     //
     //@return true or false depending if conditions are met
     
-    searchInternshipForSalary(internship, minSalary, maxSalary, timePeriod) {
+    searchInternshipForSalary(internship, minSalary, timePeriod) {
+        maxSalary = MAX_VALUE
         if (timePeriod == 1) {
             if (internship.salary >= minSalary && internship.salary <= maxSalary) {
                 return true
