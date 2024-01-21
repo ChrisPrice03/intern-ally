@@ -13,6 +13,12 @@ jobs:
     steps:
       - name: Execute Python script
         run: python scraper.py
+      - name: Checkout repo
+        run: actions/checkout@v2
+      - name: Setup Python Version
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
       - name: Commit Files
         run: |
           git config --local user.name ChrisPrice03
