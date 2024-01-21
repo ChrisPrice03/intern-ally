@@ -1,13 +1,9 @@
 #intro {
     text-align: center;
-    background-color: aquamarine;
+    background-color: rgba(135,206,250,0.54) ;
     font-size: larger;
 }
 
-body {
-    background-color: white;
-}
-
 html {
-    background-color: chocolate;
+    background-color: rgba(135,206,250,0.49);
 }
