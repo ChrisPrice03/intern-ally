@@ -11,6 +11,9 @@ let ft = new FilterTool();
 function onLoad() {
     const { spawn } = require('child_process');
     const scraper = spawn('python', ['scraper.py'])
+    scraper.stdout.on('data', function(data) {
+        console.log("working");
+    });
     //makes general cache
     myGeneralCache = myInternLoader.loadCache('internship.txt');
 
