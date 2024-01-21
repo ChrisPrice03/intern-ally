@@ -266,7 +266,7 @@ class InternshipCache {
         cache.newInternship("Samsung", "logo","Data scientist", 10000, ["Android"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
         cache.newInternship("Apple", "https://www.google.com/search?sca_esv=600225276&sxsrf=ACQVn0-2xAUz3oid0Iv_cjVQShPvmBOFSg:1705841834525&q=apple+logo&tbm=isch&source=lnms&sa=X&ved=2ahUKEwj-19uExO6DAxWILUQIHWzgDL8Q0pQJegQIDBAB&biw=1920&bih=911#imgrc=fB8a59rAlQMoOM","Software Engineer", 93600, ["C", "git", "Java"], "desc", "https://intern-ally.co/", ["Computer Science"], ["USA"])
         cache.newInternship("PRACTICE Benefit Corp", "logo","NYC K-12 Tutors for all Boroughs", 192720.0, ["Android"], "NYC K-12 Tutors for all Boroughs", "https://www.linkedin.com/jobs/view/nyc-k-12-tutors-for-all-boroughs-at-practice-benefit-corp-3801471301", [""], ["NY"])
-        cache.newInternship("Samsung", "logo","Data scientist", 10000, ["Android"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
+        cache.newInternship("Cisco", "logo","Machine Learning Internship", 100000, ["Android"], "test", "https://intern-ally.co/", ["Computer Science"], ["USA"])
         cache.newInternship("Samsung", "logo","Data scientist", 10000, ["Android"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
 
         return cache
