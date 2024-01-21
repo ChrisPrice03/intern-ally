@@ -287,6 +287,16 @@
 </footer>
 
 <script>
+import * as job_funcs from './internship.js'
+import {FilterTool, Internship, InternshipCache, InternshipLoader} from "./internship.js";
+
+//let x =  new Internship();
+
+let myInternLoader = new InternshipLoader();
+let myGeneralCache = new InternshipCache();
+let myFilteredCache = new InternshipCache();
+let ft = new FilterTool();
+    
 function alertMe() {
   window.alert("Hello World!");
 }
