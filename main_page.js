@@ -8,12 +8,19 @@ let myGeneralCache = new InternshipCache();
 let myFilteredCache = new InternshipCache();
 let ft = new FilterTool();
 
+
+            function runPythonScript() {
+                var pythonScriptPath = "./scraper.py";
+                subprocess.run(["python", pythonScriptPath]);
+            }
+        
+
 function onLoad() {
-    const { spawn } = require('child_process');
-    const scraper = spawn('python', ['scraper.py'])
-    scraper.stdout.on('data', function(data) {
-        console.log("working");
-    });
+    // const { spawn } = require('child_process');
+    // const scraper = spawn('python', ['scraper.py'])
+    // scraper.stdout.on('data', function(data) {
+    //     console.log("working");
+    // });
     //makes general cache
     myGeneralCache = myInternLoader.loadCache('internship.txt');
 
