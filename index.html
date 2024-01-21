@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="test.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InternAlly</title>
@@ -258,6 +259,7 @@
 
 <main>
     <div class="blue-box"></div>
+    <div id="internship_postings"></div>
     <div class="white-box">
         <h2>Box 1</h2>
         <p>Call me Gustavo because I want your name and number ;)</p>
@@ -285,22 +287,6 @@
 
 <footer>
 </footer>
-
-<script>
-import * as job_funcs from './internship.js'
-import {FilterTool, Internship, InternshipCache, InternshipLoader} from "./internship.js";
-
-//let x =  new Internship();
-
-let myInternLoader = new InternshipLoader();
-let myGeneralCache = new InternshipCache();
-let myFilteredCache = new InternshipCache();
-let ft = new FilterTool();
-    
-function alertMe() {
-  window.alert("Hello World!");
-}
-</script>
     
 </body>
 </html>
