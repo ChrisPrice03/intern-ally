@@ -128,13 +128,13 @@ class Internships():
                     #print(description)
                 
                 # find link
-                link_tag = soup.find("button", class_="temp")
+                link_tag = soup.find("link", rel="canonical")
                 if link_tag is None:
                     link = "aekjfo;i"
                     #print("error4")
                 else:
-                    link = link_tag.text
-                    #print(link)
+                    link = link_tag.attrs['href']
+                    print(link)
                 
                 # find location
                 location_tag = soup.find("span", class_="topcard__flavor topcard__flavor--bullet")
