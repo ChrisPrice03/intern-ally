@@ -1,5 +1,5 @@
-import * as job_funcs from 'internship.js'
-import {FilterTool, Internship, InternshipCache, InternshipLoader} from "internship.js";
+import * as job_funcs from './internship.js'
+import {FilterTool, Internship, InternshipCache, InternshipLoader} from "./internship.js";
 
 //let x =  new Internship();
 
@@ -9,6 +9,8 @@ let myFilteredCache = new InternshipCache();
 let ft = new FilterTool();
 
 function onLoad() {
+    const { spawn } = require('child_process');
+    const scraper = spawn('python', ['scraper.py'])
     //makes general cache
     myGeneralCache = myInternLoader.loadCache('internship.txt');
 
