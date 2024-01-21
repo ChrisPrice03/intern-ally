@@ -14,7 +14,10 @@ let ft = new FilterTool();
                 subprocess.run(["python", pythonScriptPath]);
                         onLoad();
             }
-        
+
+window.onload = function () {
+        alert("new on load")
+}
 
 function onLoad() {
     // const { spawn } = require('child_process');
