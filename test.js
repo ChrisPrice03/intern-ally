@@ -263,8 +263,8 @@ class InternshipCache {
         }
         file.close()
        */
-        cache.newInternship("Apple2", "logo","data scientist", 10000, ["dead"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
-        cache.newInternship("Apple", "logo","software eng", 2, ["living", "git", "Java"], "desc", "https://intern-ally.co/", ["compsci"], ["USA"])
+        cache.newInternship("Samsung", "logo","Data scientist", 10000, ["Android"], "test", "https://intern-ally.co/", ["Data Science"], ["USA"])
+        cache.newInternship("Apple", "https://www.google.com/search?sca_esv=600225276&sxsrf=ACQVn0-2xAUz3oid0Iv_cjVQShPvmBOFSg:1705841834525&q=apple+logo&tbm=isch&source=lnms&sa=X&ved=2ahUKEwj-19uExO6DAxWILUQIHWzgDL8Q0pQJegQIDBAB&biw=1920&bih=911#imgrc=fB8a59rAlQMoOM","Software Engineer", 93600, ["C", "git", "Java"], "desc", "https://intern-ally.co/", ["Computer Science"], ["USA"])
 
         return cache
     }
@@ -646,13 +646,12 @@ let myGeneralCache = new InternshipCache();
 let myFilteredCache = new InternshipCache();
 let ft = new FilterTool();
 
-function alertMe() {
-    window.alert("Button clicked!");
+function alertMe() { //empty
+    
 }
 
 function onLoad() {
     myGeneralCache = myInternLoader.loadCache('internship.txt');
-    window.alert(myGeneralCache.getCacheSize);
     myFilteredCache = myGeneralCache;
     print_postings();
 }
@@ -666,7 +665,6 @@ function filterNow() {
 }
 
 function getSelectedMajors() {
-    alert("working");
     var selectedMajors = [];
     var selectedElement_major = document.getElementById("major_select");
 
@@ -717,7 +715,6 @@ function load_more() {
 }
 
 function filter_major() {
-    alert("works2");
     var num_majors = getSelectedMajors().length;
     if (num_majors > 0) {
         myFilteredCache = ft.majorSearch(myFilteredCache, getSelectedMajors());
@@ -726,7 +723,6 @@ function filter_major() {
 }
 
 function filter_city() {
-    alert("works!")
     var num_cities= getSelectedCities().length;
     if (num_cities > 0) {
         myFilteredCache = ft.citySearch(myFilteredCache, getSelectedCities());
@@ -808,7 +804,6 @@ function filter_salary() {
 // }
 
 function print_postings() {
-    alert(myFilteredCache.getCacheSize+ ":\n" + myFilteredCache.internships[0] + "\n" + myFilteredCache.internships[1]);
     var internshipPostings = document.getElementById("internship_postings");
     myFilteredCache.internships.forEach(function(item) {
         var divElement = document.createElement("div");
@@ -830,7 +825,7 @@ function print_postings() {
         paragraph_info.textContent = "Salary: " + item.salary + "\n"
             + "Location: " + item.location + "\n"
             + "Skills: " + item.skills + "\n"
-            + "Degree: " + item.degree;
+            + "Degree: " + item.degree + "\n";
 
         job_info_div.appendChild(paragraph_info);
 
@@ -843,7 +838,6 @@ function print_postings() {
 
         var learn_button = document.createElement("button");
         learn_button.textContent = "Learn More";
-        learn_button.onclick = alert("This is going to open a link when we fix it lol");
 
         job_logo_div.appendChild(item_logo);
         job_logo_div.appendChild(learn_button);
