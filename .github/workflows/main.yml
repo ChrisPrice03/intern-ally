@@ -11,10 +11,6 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Set Timezone
-        uses: szenius/set-timezone@v1.0
-        with:
-          timezoneLinux: "EST"
       - name: Execute Python script
         run: python scraper.py
       - name: Commit Files
@@ -22,5 +18,4 @@ jobs:
           git config --local user.name ChrisPrice03
           git config --local user.email squacknog@gmail.com
           git add --all
-          git commit -am "GH ACTION Headlines $(date)"|
           git push origin main
