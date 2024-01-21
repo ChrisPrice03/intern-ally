@@ -79,10 +79,6 @@ function getSelectedSkills() {
     //internship.majorSearch(tempInternshipCache, selectedMajors);
 }
 
-function load_more() {
-    job_funcs.updateCache("internship.txt", internshipCache);
-}
-
 function filter_major() {
     alert("works2");
     var num_majors = getSelectedMajors().length;
