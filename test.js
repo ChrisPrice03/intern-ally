@@ -822,10 +822,10 @@ function print_postings() {
         job_info_div.className = "job_info";
 
         var paragraph_info = document.createElement("p");
-        paragraph_info.textContent = "Salary: " + item.salary + "<br>"
-            + "Location: " + item.location + "<br>"
-            + "Skills: " + item.skills + "<br>"
-            + "Degree: " + item.degree + "<br>";
+        paragraph_info.textContent = "Salary: " + item.salary + "          "
+            + "Location: " + item.location + "          "
+            + "Skills: " + item.skills + "          "
+            + "Degree: " + item.degree + "          ";
 
         job_info_div.appendChild(paragraph_info);
 
